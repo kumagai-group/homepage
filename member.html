@@ -1,0 +1,1214 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="description" content="検索インデックスから復元した熊谷研究室メンバーページの静的HTML試作版です。">
+  <title>メンバー | 熊谷研究室 — 復元テスト版</title>
+
+  <style>
+    :root {
+      --navy: #0c2944;
+      --navy-2: #173d5c;
+      --teal: #397f82;
+      --teal-soft: #e5f0ef;
+      --gold: #b9852a;
+      --gold-soft: #f5ead5;
+      --ink: #17232f;
+      --muted: #5d6b77;
+      --line: #d9e1e6;
+      --paper: #ffffff;
+      --wash: #f3f6f7;
+      --danger: #963f32;
+      --danger-soft: #f9eae7;
+      --shadow: 0 16px 40px rgba(10, 38, 62, .09);
+      --radius-lg: 24px;
+      --radius-md: 15px;
+      --max: 1160px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: var(--navy-2);
+      text-underline-offset: .18em;
+    }
+
+    a:hover {
+      color: var(--teal);
+    }
+
+    img,
+    svg {
+      max-width: 100%;
+      display: block;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -5rem;
+      z-index: 100;
+      padding: .65rem 1rem;
+      background: var(--paper);
+      color: var(--navy);
+      border-radius: 0 0 8px 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+
+    .test-bar {
+      background: #071b2c;
+      color: #eff5f8;
+      font-size: .82rem;
+      letter-spacing: .04em;
+    }
+
+    .test-bar__inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: .42rem 1.4rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .test-bar strong {
+      color: #ffd996;
+    }
+
+    .site-header {
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, .98);
+    }
+
+    .header-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1.1rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+      color: var(--ink);
+      text-decoration: none;
+      min-width: 265px;
+    }
+
+    .brand img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .brand__title {
+      display: block;
+      font-size: 1.28rem;
+      font-weight: 760;
+      letter-spacing: .035em;
+      line-height: 1.2;
+    }
+
+    .brand__sub {
+      display: block;
+      color: var(--muted);
+      font-size: .76rem;
+      margin-top: .22rem;
+    }
+
+    .site-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: .25rem;
+    }
+
+    .site-nav a {
+      display: block;
+      padding: .55rem .72rem;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: .91rem;
+      font-weight: 650;
+      border-radius: 8px;
+    }
+
+    .site-nav a:hover {
+      background: var(--wash);
+      color: var(--navy);
+    }
+
+    .site-nav a[aria-current="page"] {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .site-nav .is-unavailable {
+      color: #8c969e;
+      cursor: not-allowed;
+    }
+
+    .hero {
+      background:
+        linear-gradient(135deg, #0b2944 0%);
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .hero__inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 5.2rem 1.4rem 4.8rem;
+      position: relative;
+    }
+
+
+
+    .eyebrow {
+      margin: 0 0 .8rem;
+      color: #b8dedb;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.6rem, 7vw, 5.3rem);
+      line-height: 1.05;
+      letter-spacing: -.025em;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero__lead {
+      max-width: 720px;
+      margin: 1.35rem 0 0;
+      color: rgba(255, 255, 255, .84);
+      font-size: 1.03rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .main {
+      background: var(--paper);
+    }
+
+    .section {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 4.7rem 1.4rem;
+    }
+
+    .section+.section {
+      border-top: 1px solid var(--line);
+    }
+
+    .section--wash {
+      max-width: none;
+      background: var(--wash);
+    }
+
+    .section--wash>.section__inner,
+    .section--dark>.section__inner {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .section--dark {
+      max-width: none;
+      color: #eef5f7;
+      background: #0b2438;
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 2rem;
+      align-items: start;
+      margin-bottom: 2.3rem;
+    }
+
+    .section-kicker {
+      color: var(--teal);
+      font-size: .77rem;
+      font-weight: 820;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-top: .32rem;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      line-height: 1.25;
+      letter-spacing: -.015em;
+    }
+
+    .section-heading p {
+      margin: .65rem 0 0;
+      color: var(--muted);
+      max-width: 780px;
+    }
+
+    .section--dark .section-kicker {
+      color: #8bc8c5;
+    }
+
+    .section--dark .section-heading p {
+      color: #b7c8d1;
+    }
+
+    .photo-card {
+      margin: 0;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--navy);
+      box-shadow: var(--shadow);
+    }
+
+    .photo-card img {
+      width: 100%;
+      aspect-ratio: 2 / 1;
+      object-fit: cover;
+    }
+
+    .photo-card figcaption {
+      background: #fff;
+      padding: 1rem 1.25rem 1.2rem;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .photo-card figcaption strong {
+      color: var(--ink);
+    }
+
+    .member-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .member-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 1.55rem;
+      background: var(--paper);
+      box-shadow: 0 8px 24px rgba(10, 38, 62, .045);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .member-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 5px;
+      background: var(--teal);
+    }
+
+    .member-card__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .role {
+      display: inline-block;
+      padding: .28rem .6rem;
+      border-radius: 999px;
+      color: var(--navy);
+      background: var(--teal-soft);
+      font-size: .75rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .role--gold {
+      color: #76551a;
+      background: var(--gold-soft);
+    }
+
+    .member-card h3 {
+      margin: .75rem 0 .12rem;
+      font-size: 1.36rem;
+      line-height: 1.3;
+    }
+
+    .member-card__latin {
+      margin: 0;
+      color: var(--muted);
+      font-size: .84rem;
+      letter-spacing: .04em;
+    }
+
+    .member-meta {
+      display: grid;
+      grid-template-columns: 5.4rem 1fr;
+      gap: .45rem .85rem;
+      margin: 1.25rem 0 0;
+      font-size: .92rem;
+    }
+
+    .member-meta dt {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .member-meta dd {
+      margin: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .email {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: .86rem;
+    }
+
+    .student-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .student-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      padding: 1.2rem 1.2rem 1.25rem;
+    }
+
+    .student-card__head {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+    }
+
+    .degree {
+      display: inline-grid;
+      place-items: center;
+      min-width: 2.6rem;
+      height: 2.1rem;
+      padding: 0 .55rem;
+      border-radius: 7px;
+      color: #fff;
+      background: var(--navy-2);
+      font-size: .76rem;
+      font-weight: 850;
+      letter-spacing: .04em;
+    }
+
+    .student-card h3 {
+      margin: 0;
+      font-size: 1.08rem;
+    }
+
+    .student-card__latin {
+      color: var(--muted);
+      font-size: .78rem;
+      margin: .25rem 0 .8rem 3.3rem;
+    }
+
+    .student-card .email {
+      margin: 0;
+      color: #455563;
+    }
+
+    .note {
+      margin: .85rem 0 0;
+      padding-top: .75rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    .badge-warning {
+      display: inline-block;
+      margin-left: .35rem;
+      padding: .12rem .43rem;
+      border-radius: 999px;
+      color: var(--danger);
+      background: var(--danger-soft);
+      font-size: .68rem;
+      font-weight: 850;
+      vertical-align: middle;
+    }
+
+    .alumni-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: .7rem;
+    }
+
+    .alumni-item {
+      display: grid;
+      grid-template-columns: 10rem minmax(0, 1fr) 13rem;
+      gap: 1.2rem;
+      align-items: start;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .12);
+    }
+
+    .alumni-item:last-child {
+      border-bottom: 0;
+    }
+
+    .alumni-role {
+      color: #9ccfcd;
+      font-weight: 750;
+      font-size: .9rem;
+    }
+
+    .alumni-name {
+      font-weight: 750;
+    }
+
+    .alumni-detail {
+      color: #bdccd4;
+      font-size: .86rem;
+      margin-top: .18rem;
+    }
+
+    .alumni-period {
+      color: #c8d5dc;
+      text-align: right;
+      font-size: .87rem;
+    }
+
+    .recovery-box {
+      border: 1px solid #dec791;
+      background: #fffaf0;
+      border-radius: var(--radius-md);
+      padding: 1.4rem 1.5rem;
+    }
+
+    .recovery-box h2 {
+      margin: 0 0 .55rem;
+      font-size: 1.25rem;
+    }
+
+    .recovery-box p {
+      margin: .35rem 0;
+    }
+
+    .recovery-box ul {
+      margin: .7rem 0 0;
+      padding-left: 1.25rem;
+    }
+
+    .recovery-box li+li {
+      margin-top: .35rem;
+    }
+
+    .site-footer {
+      background: #071b2c;
+      color: #c3d1d9;
+    }
+
+    .footer-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 2.2rem 1.4rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      align-items: flex-end;
+    }
+
+    .footer-title {
+      color: #fff;
+      font-weight: 760;
+      margin-bottom: .2rem;
+    }
+
+    .footer-small {
+      font-size: .78rem;
+      color: #9cb0bd;
+    }
+
+    .footer-status {
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 999px;
+      padding: .35rem .7rem;
+      font-size: .72rem;
+      color: #ffd996;
+      white-space: nowrap;
+    }
+
+    .report-page {
+      background: var(--wash);
+    }
+
+    .report-shell {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 3rem 1.4rem 5rem;
+    }
+
+    .report-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 2.2rem;
+    }
+
+    .report-card h1 {
+      margin-top: 0;
+      line-height: 1.25;
+    }
+
+    .report-card h2 {
+      margin-top: 2.2rem;
+      border-top: 1px solid var(--line);
+      padding-top: 1.5rem;
+    }
+
+    .coverage-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      font-size: .92rem;
+    }
+
+    .coverage-table th,
+    .coverage-table td {
+      border-bottom: 1px solid var(--line);
+      padding: .85rem .7rem;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .coverage-table th {
+      background: var(--wash);
+      color: var(--navy);
+    }
+
+    .status-good {
+      color: #276c58;
+      font-weight: 800;
+    }
+
+    .status-check {
+      color: #99651c;
+      font-weight: 800;
+    }
+
+    .status-missing {
+      color: var(--danger);
+      font-weight: 800;
+    }
+
+    .code-block {
+      background: #0b2438;
+      color: #e8f1f4;
+      padding: 1rem 1.1rem;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: .82rem;
+    }
+
+    .landing {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+      background: radial-gradient(circle at top right, #dcebea, transparent 35%), var(--wash);
+    }
+
+    .landing-card {
+      max-width: 820px;
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 2.7rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    .landing-brand {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .landing-brand img {
+      width: 60px;
+    }
+
+    .landing-card h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.12;
+      margin: 1.7rem 0 1rem;
+    }
+
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .8rem;
+      margin-top: 1.6rem;
+    }
+
+    .button {
+      display: inline-block;
+      padding: .75rem 1rem;
+      border-radius: 9px;
+      text-decoration: none;
+      font-weight: 750;
+    }
+
+    .button--primary {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .button--primary:hover {
+      background: var(--teal);
+      color: #fff;
+    }
+
+    .button--secondary {
+      border: 1px solid var(--line);
+      color: var(--navy);
+    }
+
+    @media (max-width: 900px) {
+      .header-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: .8rem;
+      }
+
+      .site-nav ul {
+        justify-content: flex-start;
+      }
+
+      .hero__inner::after {
+        right: -110px;
+      }
+
+      .section-heading {
+        grid-template-columns: 1fr;
+        gap: .35rem;
+      }
+
+      .member-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .student-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .alumni-item {
+        grid-template-columns: 8rem 1fr;
+      }
+
+      .alumni-period {
+        grid-column: 2;
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 620px) {
+      body {
+        font-size: 15px;
+      }
+
+      .test-bar__inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: .1rem;
+      }
+
+      .brand__sub {
+        max-width: 230px;
+      }
+
+      .site-nav ul {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        width: 100%;
+      }
+
+      .site-nav a {
+        text-align: center;
+        padding: .5rem .35rem;
+        font-size: .8rem;
+      }
+
+      .hero__inner {
+        padding-top: 3.8rem;
+        padding-bottom: 3.8rem;
+      }
+
+      .section {
+        padding-top: 3.5rem;
+        padding-bottom: 3.5rem;
+      }
+
+      .student-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .alumni-item {
+        grid-template-columns: 1fr;
+        gap: .25rem;
+      }
+
+      .alumni-period {
+        grid-column: auto;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .report-card,
+      .landing-card {
+        padding: 1.4rem;
+      }
+
+      .coverage-table {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+
+    @media print {
+
+      .test-bar,
+      .site-nav,
+      .skip-link {
+        display: none;
+      }
+
+      .site-header {
+        border-bottom: 1px solid #bbb;
+      }
+
+      .hero {
+        background: #fff;
+        color: #000;
+      }
+
+      .hero__lead {
+        color: #333;
+      }
+
+      .member-card,
+      .photo-card {
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#main" aria-label="熊谷研究室 復元テスト版トップ">
+        <span>
+          <span class="brand__title">熊谷研究室 <span lang="en">Kumagai Group</span></span>
+          <span class="brand__sub">東北大学 金属材料研究所 複合機能材料学研究部門</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="主要ナビゲーション">
+        <ul>
+          <li><a href="./home.html" aria-disabled="true">HOME</a></li>
+          <li><a class="is-unavailable" href="#" aria-disabled="true" title="テスト版では未作成">研究テーマ</a></li>
+          <li><a href="./" aria-current="page">メンバー</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="site">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero__inner">
+        <p class="eyebrow">People</p>
+        <h1 id="page-title">メンバー</h1>
+        <p class="hero__lead">第一原理計算、マテリアルズインフォマティクス、格子欠陥に取り組む研究グループです。</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="photo-heading">
+      <div class="section-heading">
+        <div class="section-kicker">Group photo</div>
+        <div>
+          <h2 id="photo-heading">研究室集合写真</h2>
+        </div>
+      </div>
+      <figure class="photo-card">
+        <img src="DSC_9525-調整2.jpg" width="1440" height="720" alt="研究室集合写真の差し替え位置。元画像ファイルは要回収。">
+      </figure>
+    </section>
+
+    <section class="section section--wash" aria-labelledby="staff-heading">
+      <div class="section__inner">
+        <div class="section-heading">
+          <div class="section-kicker">Staff</div>
+          <div>
+            <h2 id="staff-heading">スタッフ・研究員</h2>
+            <div class="email">メールアドレスの「☆」は「@」に置き換えてください。</div>
+
+          </div>
+        </div>
+
+        <div class="member-grid">
+          <article class="member-card">
+            <div class="member-card__top"><span class="role role--gold">教授</span></div>
+            <h3>熊谷 悠</h3>
+            <p class="member-card__latin" lang="en">Yu Kumagai</p>
+            <dl class="member-meta">
+              <dt>メール</dt>
+              <dd class="email">yukumagai☆tohoku.ac.jp</dd>
+              <dt>研究テーマ</dt>
+              <dd>非金属物質中の点欠陥、ハイスループット第一原理計算</dd>
+              <dt>研究者情報</dt>
+              <dd>
+                <a class="scholar-link"
+                  href="https://scholar.google.com/citations?hl=en&user=xST4MSEAAAAJ&view_op=list_works&sortby=pubdate"
+                  target="_blank" rel="noopener noreferrer" aria-label="益田快理のGoogle Scholarプロフィールを新しいタブで開く">
+                  Google Scholar ↗
+                </a>
+              </dd>
+            </dl>
+          </article>
+
+          <article class="member-card">
+            <div class="member-card__top"><span class="role role--gold">講師</span></div>
+            <h3>清原 慎</h3>
+            <p class="member-card__latin" lang="en">Shin Kiyohara</p>
+            <dl class="member-meta">
+              <dt>メール</dt>
+              <dd class="email">sin☆tohoku.ac.jp</dd>
+              <dt>研究テーマ</dt>
+              <dd>マテリアルズインフォマティクス &amp; 格子欠陥の第一原理計算</dd>
+              <dt>研究者情報</dt>
+              <dd>
+                <a class="scholar-link"
+                  href="https://scholar.google.com/citations?hl=ja&user=PtwI5oMAAAAJ&view_op=list_works&sortby=pubdate"
+                  target="_blank" rel="noopener noreferrer" aria-label="益田快理のGoogle Scholarプロフィールを新しいタブで開く">
+                  Google Scholar ↗
+                </a>
+              </dd>
+            </dl>
+          </article>
+
+
+
+          <article class="member-card">
+            <div class="member-card__top"><span class="role role--gold">助教</span></div>
+            <h3>Vu Thi Ngoc Huyen</h3>
+            <dl class="member-meta">
+              <dt>メール</dt>
+              <dd class="email">vu.thi.ngoc.huyen.b6☆tohoku.ac.jp</dd>
+              <dt>研究テーマ</dt>
+              <dd>第一原理計算を用いた材料探索</dd>
+
+              <dt>研究者情報</dt>
+              <dd>
+                <a class="scholar-link"
+                  href="https://scholar.google.com/citations?hl=en&user=aiKAgucAAAAJ&view_op=list_works&sortby=pubdate"
+                  target="_blank" rel="noopener noreferrer">
+                  Google Scholar ↗
+                </a>
+              </dd>
+            </dl>
+          </article>
+
+
+
+          <article class="member-card">
+            <div class="member-card__top">
+              <span class="role role--gold">助教</span>
+            </div>
+
+            <h3>益田 快理</h3>
+            <p class="member-card__latin" lang="en">Kairi Masuda</p>
+
+            <dl class="member-meta">
+              <dt>メール</dt>
+              <dd class="email">kairi.masuda.c5☆tohoku.ac.jp</dd>
+
+              <dt>研究テーマ</dt>
+              <dd>原子レベルのフェーズフィールド法の開発</dd>
+
+              <dt>研究者情報</dt>
+              <dd>
+                <a class="scholar-link" href="https://scholar.google.com/citations?user=RYX0N0sAAAAJ&amp;hl=ja"
+                  target="_blank" rel="noopener noreferrer" aria-label="益田快理のGoogle Scholarプロフィールを新しいタブで開く">
+                  Google Scholar ↗
+                </a>
+              </dd>
+            </dl>
+          </article>
+
+
+
+
+
+          <article class="member-card">
+            <div class="member-card__top"><span class="role role--gold">博士研究員</span></div>
+            <h3 lang="en">Rafael Costa Amaral</h3>
+            <dl class="member-meta">
+              <dt>メール</dt>
+              <dd class="email">costa.amaral.rafael.d7☆tohoku.ac.jp</dd>
+              <dt>研究テーマ</dt>
+              <dd lang="en">First-principles calculations of point defects</dd>
+              <dt>研究者情報</dt>
+              <dd>
+                <a class="scholar-link" href="https://scholar.google.com/citations?user=mdvm6AIAAAAJ&hl=en"
+                  target="_blank" rel="noopener noreferrer" aria-label="益田快理のGoogle Scholarプロフィールを新しいタブで開く">
+                  Google Scholar ↗
+                </a>
+              </dd>
+            </dl>
+          </article>
+
+          <article class="member-card">
+            <div class="member-card__top"><span class="role role--gold">秘書</span></div>
+            <h3 lang="en">沼田里美</h3>
+            <p class="member-card__latin" lang="en">Satomi Numata</p>
+
+            <dl class="member-meta">
+              <dt>メール</dt>
+              <dd class="email">satomi.numata.c2☆tohoku.ac.jp</dd>
+
+            </dl>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="member-heading">
+      <div class="section-heading">
+        <div class="section-kicker">Students</div>
+      </div>
+
+      <div class="member-grid">
+        <article class="member-card">
+          <div class="member-card__top"><span class="role role--gold">D1・次世代AI人材育成プロジェクト</span></div>
+          <h3>滝川 敦之</h3>
+
+          <p class="member-card__latin" lang="en">Atsushi Takigawa</p>
+          <dl class="member-meta">
+            <dt>メール</dt>
+            <dd class="email">takigawa.atsushi.s1☆dc.tohoku.ac.jp</dd>
+            <dt>研究テーマ</dt>
+            <dd lang="jp">第一原理計算を用いた高誘電体の探索</dd>
+
+          </dl>
+        </article>
+
+        <article class="member-card">
+          <div class="member-card__top"><span class="role role--gold">M2</span></div>
+          <h3>田村 友佑</h3>
+          <p class="member-card__latin" lang="en">Yusuke Tamura</p>
+
+          <dl class="member-meta">
+            <dt>メール</dt>
+            <dd class="email">tamura.yusuke.s5☆dc.tohoku.ac.jp</dd>
+            <dt>研究テーマ</dt>
+            <dd lang="jp">データ駆動フェーズフィールド法の開発</dd>
+
+          </dl>
+        </article>
+
+        <article class="member-card">
+          <div class="member-card__top"><span class="role role--gold">M2</span></div>
+          <h3>中島 大樹</h3>
+
+          <p class="member-card__latin" lang="en">Daiki Nakajima</p>
+          <dl class="member-meta">
+            <dt>メール</dt>
+            <dd class="email">nakajima.daiki.r5☆dc.tohoku.ac.jp</dd>
+            <dt>研究テーマ</dt>
+            <dd lang="jp">強誘電材料の機械学習ポテンシャル開発</dd>
+
+          </dl>
+        </article>
+
+        <article class="member-card">
+          <div class="member-card__top"><span class="role role--gold">M2</span></div>
+          <h3>深澤 昇悟</h3>
+
+          <p class="member-card__latin" lang="en">Shogo Fukazawa</p>
+          <dl class="member-meta">
+            <dt>メール</dt>
+            <dd class="email">fukazawa.shogo.s1☆dc.tohoku.ac.jp</dd>
+            <dt>研究テーマ</dt>
+            <dd lang="jp">第一原理計算を用いた高プロトン伝導体探索</dd>
+
+          </dl>
+        </article>
+
+        <article class="member-card">
+          <div class="member-card__top"><span class="role role--gold">M1</span></div>
+          <h3>河野 正宗</h3>
+
+          <p class="member-card__latin" lang="en">Masamune Kawano</p>
+          <dl class="member-meta">
+            <dt>メール</dt>
+            <dd class="email">kawano.masamune.r1☆dc.tohoku.ac.jp</dd>
+            <dt>研究テーマ</dt>
+            <dd lang="jp">有限温度/非酸化物の高誘電体探索</dd>
+            開発
+          </dl>
+        </article>
+
+        <article class="member-card">
+          <div class="member-card__top"><span class="role role--gold">M1</span></div>
+          <h3>杉山 諒</h3>
+
+          <p class="member-card__latin" lang="en">Ryo Sugiyama</p>
+          <dl class="member-meta">
+            <dt>メール</dt>
+            <dd class="email">sugiyama.ryo.q6☆dc.tohoku.ac.jp</dd>
+            <dt>研究テーマ</dt>
+            <dd lang="jp">画像抽出を用いた高イオン伝導帯の探索</dd>
+
+          </dl>
+        </article>
+
+        <article class="member-card">
+          <div class="member-card__top"><span class="role role--gold">M1</span></div>
+          <h3>平岡 源四郎</h3>
+
+          <p class="member-card__latin" lang="en">Genshiro Hiraoka</p>
+          <dl class="member-meta">
+            <dt>メール</dt>
+            <dd class="email">hiraoka.genshirou.p1☆dc.tohoku.ac.jp</開発>
+            <dt>研究テーマ</dt>
+            <dd lang="jp">高速自由エネルギー計算法の開発</dd>
+
+          </dl>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section--dark" aria-labelledby="alumni-heading">
+      <div class="section__inner">
+        <div class="section-heading">
+          <div class="section-kicker">Alumni</div>
+          <div>
+            <h2 id="alumni-heading">過去のメンバー</h2>
+          </div>
+        </div>
+
+        <ul class="alumni-list">
+          <li class="alumni-item">
+            <div class="alumni-role">助教</div>
+            <div>
+              <div class="alumni-name">べ ソンミン <span lang="en">/ Soungmin Bae</span></div>
+              <div class="alumni-detail">キャリア自己捕獲及び点欠陥によるスモールポーラロン形成の第一原理計算</div>
+            </div>
+            <div class="alumni-period">2023年4月–2026年3月</div>
+          </li>
+          <li class="alumni-item">
+            <div class="alumni-role">修士課程</div>
+            <div class="alumni-name">篠原 遥紀</div>
+            <div class="alumni-period">2023年4月–2026年3月</div>
+          </li>
+          <li class="alumni-item">
+            <div class="alumni-role">修士課程</div>
+            <div class="alumni-name">葛城 瑠音</div>
+            <div class="alumni-period">2024年4月–2026年3月</div>
+          </li>
+          <li class="alumni-item">
+            <div class="alumni-role">修士課程</div>
+            <div class="alumni-name">太田 陽向</div>
+            <div class="alumni-period">2024年4月–2026年3月</div>
+          </li>
+          <li class="alumni-item">
+            <div class="alumni-role">修士課程</div>
+            <div>
+              <div class="alumni-name">澁井 千紗</div>
+              <div class="alumni-detail">グラフニューラルネットワークを用いた酸素空孔形成エネルギーの予測</div>
+            </div>
+            <div class="alumni-period">2023年4月–2025年3月</div>
+          </li>
+          <li class="alumni-item">
+            <div class="alumni-role">修士課程</div>
+            <div>
+              <div class="alumni-name">宮本 伊武己</div>
+              <div class="alumni-detail">第一原理計算を用いた二次元物質の点欠陥解析</div>
+            </div>
+            <div class="alumni-period">2023年4月–2025年3月</div>
+          </li>
+          <li class="alumni-item">
+            <div class="alumni-role">特任助教</div>
+            <div>
+              <div class="alumni-name">張 成燻 <span lang="en">/ Seonghoon Jang</span></div>
+              <div class="alumni-detail">第一原理計算を用いた次世代電池材料探索</div>
+            </div>
+            <div class="alumni-period">2023年9月–2025年3月</div>
+          </li>
+          <li class="alumni-item">
+            <div class="alumni-role">秘書</div>
+            <div class="alumni-name">木村 万美 <span lang="en">/ Mami Kimura</span></div>
+            <div class="alumni-period">2022年9月–2025年3月</div>
+          </li>
+          <li class="alumni-item">
+            <div class="alumni-role">准教授</div>
+            <div class="alumni-name">小野 頌太 <span lang="en">/ Shota Ono</span></div>
+            <div class="alumni-period">2023年4月–2024年5月</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-title">熊谷研究室 — Kumagai Group</div>
+        <div class="footer-small">Institute for Materials Research, Tohoku University</div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
