@@ -859,10 +859,10 @@
         /* HOME reconstruction */
         .home-hero {
             position: relative;
-            background:
-                linear-gradient(135deg, #0b2944 0%);
-            color: #fff;
             overflow: hidden;
+            color: #fff;
+            background:
+                linear-gradient(135deg, #09243b 0%);
         }
 
         .home-hero::before {
@@ -882,14 +882,15 @@
             position: relative;
             z-index: 1;
             max-width: var(--max);
-            min-height: 660px;
+            min-height: 15px;
             margin: 0 auto;
-            padding: .0rem .0rem .0rem;
+            padding: 5.1rem 1.4rem 4.7rem;
             display: grid;
-            grid-template-columns: minmax(0, 1.05fr) minmax(380px, .95fr);
-            gap: 4.5rem;
+            grid-template-columns: minmax(0, 1.05fr);
+            gap: 4rem;
             align-items: center;
         }
+
 
         .home-hero__copy {
             position: relative;
@@ -922,9 +923,8 @@
         }
 
         .home-hero h1 {
-            max-width: 780px;
             margin: 0;
-            font-size: clamp(2.65rem, 3.8vw, 5.2rem);
+            font-size: clamp(2.7rem, 5.8vw, 5rem);
             line-height: 1.08;
             letter-spacing: -.035em;
             text-wrap: balance;
@@ -1629,7 +1629,7 @@
             <nav class="site-nav" aria-label="主要ナビゲーション">
                 <ul>
                     <li><a href="./" aria-current="page">HOME</a></li>
-                    <li><a class="is-unavailable" href="#" aria-disabled="true" title="テスト版では未作成">研究テーマ</a></li>
+                    <li><a href="./research.html">研究テーマ</a></li>
                     <li><a href="./member.html">メンバー</a></li>
                 </ul>
             </nav>
@@ -1640,17 +1640,13 @@
         <section class="home-hero" aria-labelledby="home-title">
             <div class="home-hero__inner">
                 <div class="home-hero__copy">
-                    <p class="home-hero__tag">Computational Materials Science × Data Science</p>
-                    <h1 id="home-title">計算科学とAIで、<br><span class="accent">材料の未知</span>を拓く。</h1>
+                    <p class="eyebrow">Vision</p>
+
+                    <h1 id="home-title">物理とAIで、<br><span class="accent">材料の未知</span>を拓く。</h1>
                     <p class="home-hero__lead">
                         第一原理計算、計算材料データベース、マテリアルズインフォマティクスを軸に、点欠陥や機能性セラミックスを原子・電子レベルから理解し、次世代材料の発見へつなげます。</p>
 
-                </div>
-                <figure class="home-hero__visual">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3NjAgNjIwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUgZGVzYyI+CiAgPHRpdGxlIGlkPSJ0aXRsZSI+5Y6f5a2Q5qeL6YCg44O76YeP5a2Q6KiI566X44O75qmf5qKw5a2m57+S44KS6KGo44GZ5oq96LGh5ZuzPC90aXRsZT4KICA8ZGVzYyBpZD0iZGVzYyI+57WQ5pm25qC85a2Q44CB54K55qyg6Zml44CB44OH44O844K/54K544CB44OL44Ol44O844Op44Or44ON44OD44OI44Ov44O844Kv44KS57WE44G/5ZCI44KP44Gb44Gf5YaN5qeL56+J55So44Gu44Kq44Oq44K444OK44Or5Zuz54mI44CCPC9kZXNjPgogIDxkZWZzPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJwYW5lbCIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmN2ZiZmMiIHN0b3Atb3BhY2l0eT0iLjk4Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2Q5ZWNlYiIgc3RvcC1vcGFjaXR5PSIuOTIiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImRlZXAiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMGMyOTQ0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzJmNzc3OSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9InNoYWRvdyIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTYwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSIxOCIgc3RkRGV2aWF0aW9uPSIxOCIgZmxvb2QtY29sb3I9IiMwMDEwMWMiIGZsb29kLW9wYWNpdHk9Ii4yOCIvPgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgogIDxnIGZpbHRlcj0idXJsKCNzaGFkb3cpIj4KICAgIDxyZWN0IHg9IjU1IiB5PSI0OCIgd2lkdGg9IjY1MCIgaGVpZ2h0PSI1MTAiIHJ4PSIzNCIgZmlsbD0idXJsKCNwYW5lbCkiLz4KICA8L2c+CiAgPGcgb3BhY2l0eT0iLjE4IiBzdHJva2U9IiMwYzI5NDQiIHN0cm9rZS13aWR0aD0iMSI+CiAgICA8cGF0aCBkPSJNOTAgMTUwSDY3ME05MCAyMzBINjcwTTkwIDMxMEg2NzBNOTAgMzkwSDY3ME05MCA0NzBINjcwIi8+CiAgICA8cGF0aCBkPSJNMTUwIDk1VjUyME0yNTAgOTVWNTIwTTM1MCA5NVY1MjBNNDUwIDk1VjUyME01NTAgOTVWNTIwTTY1MCA5NVY1MjAiLz4KICA8L2c+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAwIDExMikiPgogICAgPHJlY3Qgd2lkdGg9IjMwMiIgaGVpZ2h0PSIyNzAiIHJ4PSIyNCIgZmlsbD0iI2ZmZmZmZiIgc3Ryb2tlPSIjYzRkOGRhIi8+CiAgICA8dGV4dCB4PSIyNCIgeT0iNDAiIGZpbGw9IiMwYzI5NDQiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9IjcwMCI+QVRPTUlDIFNUUlVDVFVSRTwvdGV4dD4KICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQ1IDc0KSIgc3Ryb2tlPSIjOWViYWJjIiBzdHJva2Utd2lkdGg9IjMiPgogICAgICA8cGF0aCBkPSJNMCAwTDY2IDM4TDEzMiAwTDE5OCAzOE0wIDc2TDY2IDExNEwxMzIgNzZMMTk4IDExNE0wIDE1Mkw2NiAxOTBMMTMyIDE1MkwxOTggMTkwIiBmaWxsPSJub25lIi8+CiAgICAgIDxwYXRoIGQ9Ik0wIDBWNzZNNjYgMzhWMTE0TTEzMiAwVjc2TTE5OCAzOFYxMTRNMCA3NlYxNTJNNjYgMTE0VjE5ME0xMzIgNzZWMTUyTTE5OCAxMTRWMTkwIiBmaWxsPSJub25lIi8+CiAgICAgIDxnIGZpbGw9IiMzOTdmODIiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSI0Ij4KICAgICAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iMCIgcj0iMTEiLz48Y2lyY2xlIGN4PSI2NiIgY3k9IjM4IiByPSIxMSIvPjxjaXJjbGUgY3g9IjEzMiIgY3k9IjAiIHI9IjExIi8+PGNpcmNsZSBjeD0iMTk4IiBjeT0iMzgiIHI9IjExIi8+CiAgICAgICAgPGNpcmNsZSBjeD0iMCIgY3k9Ijc2IiByPSIxMSIvPjxjaXJjbGUgY3g9IjY2IiBjeT0iMTE0IiByPSIxMSIvPjxjaXJjbGUgY3g9IjEzMiIgY3k9Ijc2IiByPSIxMSIvPjxjaXJjbGUgY3g9IjE5OCIgY3k9IjExNCIgcj0iMTEiLz4KICAgICAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iMTUyIiByPSIxMSIvPjxjaXJjbGUgY3g9IjY2IiBjeT0iMTkwIiByPSIxMSIvPjxjaXJjbGUgY3g9IjEzMiIgY3k9IjE1MiIgcj0iMTEiLz48Y2lyY2xlIGN4PSIxOTgiIGN5PSIxOTAiIHI9IjExIi8+CiAgICAgIDwvZz4KICAgICAgPGNpcmNsZSBjeD0iMTMyIiBjeT0iNzYiIHI9IjE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNkOGFhNGYiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLWRhc2hhcnJheT0iNSA1Ii8+CiAgICAgIDxjaXJjbGUgY3g9IjEzMiIgY3k9Ijc2IiByPSI1IiBmaWxsPSIjZDhhYTRmIiBzdHJva2U9Im5vbmUiLz4KICAgIDwvZz4KICA8L2c+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDM0IDExMikiPgogICAgPHJlY3Qgd2lkdGg9IjIyNiIgaGVpZ2h0PSIxNjYiIHJ4PSIyNCIgZmlsbD0idXJsKCNkZWVwKSIvPgogICAgPHRleHQgeD0iMjIiIHk9IjM4IiBmaWxsPSIjZDllZWVlIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTUiIGZvbnQtd2VpZ2h0PSI3MDAiPkZJUlNULVBSSU5DSVBMRVM8L3RleHQ+CiAgICA8cGF0aCBkPSJNMjQgMTIyQzU4IDY5IDg5IDE0OCAxMjQgODZTMTc4IDg4IDIwMyA1OCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOWZkOGQ0IiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogICAgPGcgZmlsbD0iI2Q4YWE0ZiI+PGNpcmNsZSBjeD0iMjQiIGN5PSIxMjIiIHI9IjYiLz48Y2lyY2xlIGN4PSI3NCIgY3k9Ijk1IiByPSI2Ii8+PGNpcmNsZSBjeD0iMTI0IiBjeT0iODYiIHI9IjYiLz48Y2lyY2xlIGN4PSIxNjgiIGN5PSI4OCIgcj0iNiIvPjxjaXJjbGUgY3g9IjIwMyIgY3k9IjU4IiByPSI2Ii8+PC9nPgogIDwvZz4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0MzQgMzA0KSI+CiAgICA8cmVjdCB3aWR0aD0iMjI2IiBoZWlnaHQ9IjE5OCIgcng9IjI0IiBmaWxsPSIjZmZmZmZmIiBzdHJva2U9IiNjNGQ4ZGEiLz4KICAgIDx0ZXh0IHg9IjIyIiB5PSIzOCIgZmlsbD0iIzBjMjk0NCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjE1IiBmb250LXdlaWdodD0iNzAwIj5NQVRFUklBTFMgQUk8L3RleHQ+CiAgICA8ZyBzdHJva2U9IiM5ZWJhYmMiIHN0cm9rZS13aWR0aD0iMi41Ij4KICAgICAgPHBhdGggZD0iTTM4IDc2TDEwMiA2Mk0zOCA3NkwxMDIgMTA1TTM4IDEzMkwxMDIgMTA1TTM4IDEzMkwxMDIgMTU0TTEwMiA2MkwxNzQgODhNMTAyIDEwNUwxNzQgODhNMTAyIDEwNUwxNzQgMTM3TTEwMiAxNTRMMTc0IDEzNyIvPgogICAgPC9nPgogICAgPGcgZmlsbD0iIzM5N2Y4MiI+PGNpcmNsZSBjeD0iMzgiIGN5PSI3NiIgcj0iMTAiLz48Y2lyY2xlIGN4PSIzOCIgY3k9IjEzMiIgcj0iMTAiLz48Y2lyY2xlIGN4PSIxMDIiIGN5PSI2MiIgcj0iMTAiLz48Y2lyY2xlIGN4PSIxMDIiIGN5PSIxMDUiIHI9IjEwIi8+PGNpcmNsZSBjeD0iMTAyIiBjeT0iMTU0IiByPSIxMCIvPjwvZz4KICAgIDxnIGZpbGw9IiNkOGFhNGYiPjxjaXJjbGUgY3g9IjE3NCIgY3k9Ijg4IiByPSIxMiIvPjxjaXJjbGUgY3g9IjE3NCIgY3k9IjEzNyIgcj0iMTIiLz48L2c+CiAgPC9nPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwMiA0MTQpIj4KICAgIDxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iODgiIHJ4PSIyMiIgZmlsbD0iI2YzZjdmNyIgc3Ryb2tlPSIjYzRkOGRhIi8+CiAgICA8dGV4dCB4PSIyNCIgeT0iMzQiIGZpbGw9IiMzOTdmODIiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9IjcwMCI+REFUQUJBU0Ug4oaSIFBSRURJQ1RJT04g4oaSIERJU0NPVkVSWTwvdGV4dD4KICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI0IDU0KSIgZmlsbD0iIzBjMjk0NCI+CiAgICAgIDxyZWN0IHdpZHRoPSIxNiIgaGVpZ2h0PSIxMiIgcng9IjMiLz48cmVjdCB4PSIyNiIgd2lkdGg9IjM0IiBoZWlnaHQ9IjEyIiByeD0iMyIgb3BhY2l0eT0iLjY4Ii8+PHJlY3QgeD0iNzAiIHdpZHRoPSIyMiIgaGVpZ2h0PSIxMiIgcng9IjMiIG9wYWNpdHk9Ii40MiIvPgogICAgICA8cmVjdCB4PSIxMTIiIHdpZHRoPSI0NCIgaGVpZ2h0PSIxMiIgcng9IjMiIG9wYWNpdHk9Ii43MiIvPjxyZWN0IHg9IjE2NiIgd2lkdGg9IjI2IiBoZWlnaHQ9IjEyIiByeD0iMyIgb3BhY2l0eT0iLjQ1Ii8+PHJlY3QgeD0iMjAyIiB3aWR0aD0iNTAiIGhlaWdodD0iMTIiIHJ4PSIzIiBvcGFjaXR5PSIuODUiLz4KICAgIDwvZz4KICA8L2c+CiAgPGNpcmNsZSBjeD0iNjgwIiBjeT0iNzUiIHI9IjE3IiBmaWxsPSIjZDhhYTRmIiBvcGFjaXR5PSIuOSIvPgogIDxjaXJjbGUgY3g9Ijc4IiBjeT0iNTU1IiByPSIxMCIgZmlsbD0iIzc1YzZjMiIgb3BhY2l0eT0iLjkiLz4KPC9zdmc+"
-                        width="760" height="620" alt="原子構造、第一原理計算、材料AIを表す抽象図">
-                </figure>
-            </div>
+                    </di物理 </div>
         </section>
 
 
